@@ -53,21 +53,24 @@ void    display(char board[ROW][COL]) //This function displays the board
     int pos2;
 
     pos1 = -1;
-    printf("\n_____________________________________");
-    printf("\n \t|\t \t|\t \t|\t\n");
+    printf("\n_____________________");
+    printf("\n \t| \t| \n");
     while (++pos1 < ROW)
     {
         pos2 = -1;
         while(++pos2 < COL)
         {
-            printf("%c\t|\t", board[pos1][pos2]);
+            if (pos2 == COL - 1)
+                printf("%c\t  ", board[pos1][pos2]);
+            else
+                printf("%c\t| ", board[pos1][pos2]);
         }
         if (pos1 == ROW - 1)
             break;
-        printf("\n_____________________________________");
-        printf("\n \t|\t \t|\t \t|\t\n");
+        printf("\n_____________________");
+        printf("\n \t| \t|\n");
     }
-    printf("\n_____________________________________");
+    printf("\n_____________________");
 }
 
 void    set_moves(char board[ROW][COL], int *player, char move) // this function places each player moves on board
@@ -105,7 +108,7 @@ void    player_move(int *player, char board[ROW][COL], char played_moves[ROW * C
 
     while (1) {
         printf("\nMake your move, Player %d: ", *player);
-        scanf(" %c", &move);
+        scanf("\n%c", &move);
         //checking if move is valid
         if (!(move >= 'a' && move <= 'i')) {
             printf("\nInvalid Move!");
